@@ -3,6 +3,7 @@ package com.nagarro.CommunityServer.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ public class Question {
 	private long questionId;
 	private String subject;
 	private String product;
+	@Column(columnDefinition = "TEXT")
 	private String body;
 	private String date;
 	private boolean answered;

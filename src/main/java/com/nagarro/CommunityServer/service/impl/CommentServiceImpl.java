@@ -43,19 +43,19 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public Comment updateComment(Comment c) {
-		c = commentRepo.save(c);
-		c.setCountLike(c.getLikes().size());
-		return commentRepo.save(c);
+	public Comment updateComment(Comment comment) {
+		comment = commentRepo.save(comment);
+		comment.setCountLike(comment.getLikes().size());
+		return commentRepo.save(comment);
 	}
 
 	@Override
-	public Comment correctComment(Comment c) {
-		Question q = c.getQuestion();
-		q = questionRepo.findByQuestionId(q.getQuestionId());
-		q.setAnswered(true);
-		questionRepo.save(q);
-		c.setCorrect(true);
-		return commentRepo.save(c);
+	public Comment correctComment(Comment comment) {
+		Question question = comment.getQuestion();
+		question = questionRepo.findByQuestionId(question.getQuestionId());
+		question.setAnswered(true);
+		questionRepo.save(question);
+		comment.setCorrect(true);
+		return commentRepo.save(comment);
 	}
 }

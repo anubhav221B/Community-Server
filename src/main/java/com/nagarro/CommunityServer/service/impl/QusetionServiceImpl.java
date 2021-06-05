@@ -21,13 +21,13 @@ public class QusetionServiceImpl implements QuestionService {
 	private QuestionRepository questionsRepo;
 
 	@Override
-	public Question setQuestion(Question q) {
+	public Question setQuestion(Question question) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
-		q.setAnswered(false);
-		q.setCountComment(0);
-		q.setDate(dtf.format(now));
-		return questionsRepo.save(q);
+		question.setAnswered(false);
+		question.setCountComment(0);
+		question.setDate(dtf.format(now));
+		return questionsRepo.save(question);
 	}
 
 	@Override
@@ -41,16 +41,16 @@ public class QusetionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<Question> getQuestionsByUser(User u) {
-		return questionsRepo.findAllByUser(u);
+	public List<Question> getQuestionsByUser(User user) {
+		return questionsRepo.findAllByUser(user);
 	}
 
 	@Override
 	public Status getQuestionStatus() {
-		Status s = new Status();
-		s.setPosts(questionsRepo.countOfQuestion());
-		s.setOnline(questionsRepo.countOfLiveQuestion());
-		return s;
+		Status status = new Status();
+		status.setPosts(questionsRepo.countOfQuestion());
+		status.setOnline(questionsRepo.countOfLiveQuestion());
+		return status;
 	}
 
 }

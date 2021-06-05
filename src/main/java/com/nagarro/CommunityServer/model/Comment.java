@@ -3,6 +3,7 @@ package com.nagarro.CommunityServer.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long commentId;
 	private String subject;
+	@Column(columnDefinition = "TEXT")
 	private String body;
 	private String date;
 	private boolean correct;
